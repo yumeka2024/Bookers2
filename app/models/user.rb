@@ -9,6 +9,10 @@ class User < ApplicationRecord
 
   #プロフィール画像カラムの作成
   has_one_attached :profile_image
+  
+  #バリデーション
+  validates :name, uniqueness: true, length: { in: 2..20 }
+  validates :introduction, length: { maximum: 50 }
 
   #プロフィール画像を表示させるメソッド
   def get_profile_image(width, height)
