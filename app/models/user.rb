@@ -3,6 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
+  #アソシエーション、1:N（books）、userが消えたらbooksも全て消す
+  has_many :books, dependent: :destroy
 
   #プロフィール画像カラムの作成
   has_one_attached :profile_image
