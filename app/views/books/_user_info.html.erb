@@ -1,0 +1,34 @@
+<!--このテンプレを導入するViewのアクションには、変数に下記を入れる-->
+<!--@user = current_user or User.find(params[:id])-->
+<!--@book = Book.new-->
+
+<h2>User info</h2>
+
+<%= image_tag @user.get_profile_image(100,100); %>
+
+<table>
+  <tbody>
+    <tr>
+      <th>name</th>
+      <th><%= @user.name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th><%= @user.introduction %></th>
+    </tr>
+  </tbody>
+</table>
+
+<div>
+  <%= link_to "編集ボタン", edit_user_path(@user) %>
+</div>
+
+<h2>New book</h2>
+
+<%= form_with model: @book, local: true do |f| %>
+  <label>Title</label>
+  <%= f.text_field :title %>
+  <label>Opinion</label>
+  <%= f.text_field :body %>
+  <%= f.submit "Create Book" %>
+<% end %>
