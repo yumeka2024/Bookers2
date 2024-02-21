@@ -1,5 +1,8 @@
+<!--%= render 'books/books', books: @books %-->
+
 <!--このテンプレを導入するViewのアクションには、変数に下記を入れる-->
-<!--@book = Book.new-->
+<!--@books = Book.all or 
+    @books = @user.books.all & @user = User.find(params[:id])-->
 
 <h2>Books</h2>
 <table>
@@ -13,7 +16,7 @@
   </thead>
   <tbody>
 
-    <% @books.each do |book| %>
+    <% books.each do |book| %>
     <tr>
       <td>
         <%= link_to user_path(book.user_id) do %>

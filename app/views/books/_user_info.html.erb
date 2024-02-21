@@ -1,31 +1,35 @@
+<!--%= render 'books/user_info', user: @user, book_new: @book_new %-->
+
 <!--このテンプレを導入するViewのアクションには、変数に下記を入れる-->
-<!--@user = current_user or User.find(params[:id])-->
-<!--@book = Book.new-->
+<!--@user = current_user or
+    @user = User.find(params[:id]) or
+    @user = @book.user & @book = Book.find(params[:id])-->
+<!--@book_new = Book.new-->
 
 <h2>User info</h2>
 
-<%= image_tag @user.get_profile_image(100,100); %>
+<%= image_tag user.get_profile_image(100,100); %>
 
 <table>
   <tbody>
     <tr>
       <th>name</th>
-      <th><%= @user.name %></th>
+      <th><%= user.name %></th>
     </tr>
     <tr>
       <th>introduction</th>
-      <th><%= @user.introduction %></th>
+      <th><%= user.introduction %></th>
     </tr>
   </tbody>
 </table>
 
 <div>
-  <%= link_to "編集ボタン", edit_user_path(@user) %>
+  <%= link_to "編集ボタン", edit_user_path(user) %>
 </div>
 
 <h2>New book</h2>
 
-<%= form_with model: @book, local: true do |f| %>
+<%= form_with model: book_new, local: true do |f| %>
   <label>Title</label>
   <%= f.text_field :title %>
   <label>Opinion</label>
