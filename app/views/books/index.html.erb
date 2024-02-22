@@ -7,13 +7,13 @@
   </ul>
 <% end %>
 
-<div>
-  <div>
-    <div>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
       <%= render 'books/user_info', user: @user, book_new: @book_new %>
     </div>
 
-    <div>
+    <div class="col-md-8 offset-md-1">
       <%= render 'books/books', books: @books %>
     </div>
   </div>

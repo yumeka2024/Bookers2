@@ -1,12 +1,12 @@
-<div>
-  <div>
-    <div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
       <%= render 'books/user_info', user: @user, book_new: @book_new %>
     </div>
 
-    <div>
+    <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
-      <table>
+      <table class="table">
         <tbody>
           <tr>
             <td>
@@ -23,12 +23,12 @@
             <td><%= @book.body %></td>
             <td>
               <% if @book.user == current_user %>
-              <%= link_to "Edit", edit_book_path(@book.id), method: :get %>
+              <%= link_to "Edit", edit_book_path(@book.id), method: :get, class: "btn btn-sm btn-success" %>
               <% end %>
             </td>
             <td>
               <% if @book.user == current_user %>
-              <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
+              <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-danger", rel: "nofollow" %>
               <% end %>
             </td>
           </tr>

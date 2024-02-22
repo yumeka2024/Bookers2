@@ -1,11 +1,11 @@
 <!--%= render 'books/books', books: @books %-->
 
 <!--このテンプレを導入するViewのアクションには、変数に下記を入れる-->
-<!--@books = Book.all or 
+<!--@books = Book.all or
     @books = @user.books.all & @user = User.find(params[:id])-->
 
 <h2>Books</h2>
-<table>
+<table class="table table-hover table-inverse">
   <thead>
     <tr>
       <th></th>
