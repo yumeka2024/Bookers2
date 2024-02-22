@@ -2,16 +2,17 @@ class BooksController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
 
   def new
-    @book = Book.new
+    @book_new = Book.new
   end
 
   def create
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
-    if @book.save
+    @book_new = Book.new(book_params)
+    @book_new.user_id = current_user.id
+    if @book_new.save
       flash[:notice] = "You have created book successfully."
-      redirect_to book_path(@book.id)
+      redirect_to book_path(@book_new.id)
     else
+      @user = current_user
       @books = Book.all
       render :index
     end
@@ -39,7 +40,7 @@ class BooksController < ApplicationController
       flash[:notice] = "You have updated book successfully."
       redirect_to book_path(@book.id)
     else
-      render :show
+      render :edit
     end
   end
 
@@ -58,7 +59,8 @@ class BooksController < ApplicationController
 
   #ログインユーザーと一致しないとアクセスさせない
   def is_matching_login_user
-    user = Book.find_by(params[:user_id])
+    book = Book.find(params[:id])
+    user = book.user
     unless user.id == current_user.id
       redirect_to books_path
     end
